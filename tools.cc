@@ -96,26 +96,26 @@ int* read_mat(char *fname, char *scaling, doc_mat *mat, int & n_Empty_Docs)
 
   sprintf(filename, "%s%s", fname, "_dim");
   std::ifstream dimfile(filename);
-  if(dimfile==0)
+  if(!dimfile)
     cout<<"Dim file "<<filename<<" can't open.\n"<<endl;
   sprintf(filename, "%s%s", fname, "_row_ccs");
   std::ifstream rowfile(filename);
-  if(rowfile==0)
+  if(!rowfile)
     cout<<"Row file "<<filename<<" can't open.\n"<<endl;
   sprintf(filename, "%s%s", fname, "_col_ccs");
   std::ifstream colfile(filename);
-  if(colfile==0)
+  if(!colfile)
     cout<<"Column file "<<filename<<" can't open.\n"<<endl;
   sprintf(filename, "%s%s", fname, "_");
   sprintf(filename, "%s%s", filename, scaling);
   sprintf(filename, "%s%s", filename, "_nz");
   std::ifstream nzfile(filename);
-  if(nzfile==0)
+  if(!nzfile)
     cout<<"Entry file "<<filename<<" can't open.\n"<<endl;
   
   int i;
   
-  if(dimfile==0|| colfile==0|| rowfile==0|| nzfile==0)
+  if(!dimfile || !colfile || !rowfile || !nzfile)
     {
       cout<<"Matrix file "<< fname<<"_* can't open."<<endl;
       exit(1);
@@ -193,7 +193,7 @@ int* read_mat(char *fname, dense_mat *mat, int & n_Empty_Docs, int format)
   int i, j;
   int *e_D_ID;
   std::ifstream inputfile(fname);
-  if(inputfile==0)
+  if(!inputfile)
     {
       cout<<"Matrix file "<<fname<<" can't open.\n"<<endl;
       exit(1);

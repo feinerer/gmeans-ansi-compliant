@@ -694,7 +694,7 @@ void Gmeans::read_cate(char *fname)
 
   std::ifstream catefile(fname);
   
-  if(catefile==0)
+  if(!catefile)
     {
       cout<<"Category file "<<fname<<" can't open.\n"<<endl;
       n_Class =0;
